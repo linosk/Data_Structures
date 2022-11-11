@@ -7,10 +7,8 @@ int main(int argc, char** argv)
     ll_insert_at_beg(&Head,3);
     ll_insert_at_beg(&Head,7);
     ll_insert_at_end(&Head,1);
-
-    ll_print_values(Head);
-
-    ll_reverse(&Head);
+    ll_insert_at_end(&Head,2);
+    ll_insert_at_end(&Head,10);
 
     ll_print_values(Head);
 
