@@ -7,11 +7,7 @@
 
 #include <stdio.h>
 
-typedef struct LLNode
-{
-    int value;
-    struct LLNode* next;
-}LLNode;
+typedef struct LLNode LLNode;
 
 LLNode* __ll_create_node(int New_value);
 
@@ -27,7 +23,9 @@ void ll_sort_ascending(LLNode** Head_node);
 void ll_sort_descending(LLNode** Head_node);
 
 void ll_reverse(LLNode** Head_node);
+
 void ll_print_values(LLNode* Head_node);
+
 void ll_destroy(LLNode* Head_node);
 
 #endif

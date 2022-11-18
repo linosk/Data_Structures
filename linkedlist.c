@@ -1,5 +1,11 @@
 #include "linkedlist.h"
 
+typedef struct LLNode
+{
+    int value;
+    struct LLNode* next;
+}LLNode;
+
 LLNode* __ll_create_node(int New_value)
 {
     LLNode* New_node = malloc(sizeof(LLNode));
@@ -37,7 +43,6 @@ void ll_insert_at_end(LLNode** Head_node, int New_value)
     Current_node->next = New_node;
 }
 
-//counting positions starts from 0
 void ll_insert_at_position(LLNode** Head_node, int New_value, int Position)
 {
     LLNode* New_node = __ll_create_node(New_value);
@@ -85,7 +90,6 @@ void ll_delate_at_end(LLNode** Head_node)
     Current_node->next = NULL;
 }
 
-//counting positions starts from 0
 void ll_delete_at_position(LLNode** Head_node, int Position)
 {
     assert((*Head_node)!=NULL);
@@ -116,7 +120,6 @@ void ll_reverse(LLNode** Head_node)
     LLNode* Current_node = (*Head_node);
     LLNode* Next_node = NULL;
     LLNode* Previous_node = NULL;
-    //while (Current_node!=NULL)
     while(Current_node!=NULL)
     {
         Next_node = Current_node->next;
@@ -131,10 +134,8 @@ void ll_print_values(LLNode* Head_node)
 {
     assert(Head_node!=NULL);
     LLNode* Current_node = Head_node;
-    //fprintf and printf difference?
     while(Current_node!=NULL)
     {
-        //it appears that fprintf also takes the memory like printf :(
         fprintf(stdout,"Value: %d\n",Current_node->value);
         Current_node = Current_node->next;
     }
