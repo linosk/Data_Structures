@@ -8,11 +8,11 @@ OUTPUT = datastructures
 
 .PHONY: all
 $(OUTPUT): $(OFILES)
-	$(CC) $(CFLAGS) $(OFILES) -o $(OUTPUT)
+	$(CC) -o $@ $^
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $^
 
 .PHONY: clean
 clean:
-	rm *.o datastructures
+	rm -rf $(OFILES) $(OUTPUT)
