@@ -1,8 +1,8 @@
 CC = gcc
 CFLAGS = -pedantic -Wextra -Wall
 
-CFILES = main.c linkedlist.c
-OFILES = main.o linkedlist.o
+CFILES = main.c linkedlist.c stack.c queue.c
+OFILES = main.o linkedlist.o stack.o queue.o
 
 OUTPUT = datastructures
 
