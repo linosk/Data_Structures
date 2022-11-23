@@ -1,20 +1,10 @@
-//#include "linkedlist.h"
-#include "stack.h"
-#include "queue.h"
+#include "hash_map.h"
 
 int main(int argc, char** argv)
 {
+    Hash_map* HS = initilize_hash_map(100);
 
-    Stack* Stack = initilize_stack(5);
-    push_stack(Stack,2);
-    push_stack(Stack,4);
-    push_stack(Stack,8);
-    push_stack(Stack,16);
-    push_stack(Stack,32);
-    print_stack(Stack);
-    pop_stack(Stack);
-    print_stack(Stack);
-    destroy_stack(Stack);
+    destroy_hash_map(HS);
 
     return 0;
 }
