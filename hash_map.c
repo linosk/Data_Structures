@@ -2,8 +2,6 @@
 
 typedef struct Person{
     char* Name;
-    int Age;
-    char* Nationality;
 }Person;
 
 typedef struct Hash_map{
@@ -18,23 +16,26 @@ Hash_map* initilize_hash_map(int Size){
     return HSHMP;
 }
 
-int __hash_function(char* Name, int Age, Nationality Nationality);
+//need to defeta enum type later
 
-typedef enum Nationality{
-    Polish,
-    Croatian,
-    Russian,
-    German,
-    Dutch,
-    Swedish,
-    English,
-    French,
-    Spanish,
-    Italian
-}Nationality;
+int __hash_function(char* Name){
+    int Buf = 0;
+    int Key = 0;
+    while(Name[Buf]!='\0')
+    {
+        Buf++;
+        Key = Key + (Name[Buf]*Name[Buf]-Buf) + Buf;
+    }
+    return Key;
+}
 
-void insert_hash(Hash_map* HSHMP, char* Name, int Age, Nationality Nationality){
+void insert_hash(Hash_map* HSHMP, char* Name){
+    assert(HSHMP!=NULL);
+    int Value = (__hash_function(Name))%HSHMP->Hash_size;
+    //HSHMP->Hash_table[Value]
 
+    //delete later
+    printf("%d\n",Value);
 }
 
 void destroy_hash_map(Hash_map* HSHMP){

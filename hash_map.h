@@ -3,17 +3,20 @@
 
 #include <stdlib.h>
 
+//delete later
+#include <stdio.h>
+
+#include <assert.h>
+
 typedef struct Person Person;
 
 typedef struct Hash_map Hash_map;
 
 Hash_map* initilize_hash_map(int Size);
 
-int __hash_function(char* Name, int Age, Nationality Nationality);
+int __hash_function(char* Name);
 
-typedef enum Nationality Nationality;
-
-void insert_hash(Hash_map* HSHMP, char* Name, int Age, Nationality Nationality);
+void insert_hash(Hash_map* HSHMP, char* Name);
 
 void destroy_hash_map(Hash_map* HSHMP);
 
