@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -pedantic -Wextra -Wall
+CFLAGS = -pedantic -Wextra -Wall -g
 
 CFILES = main.c linkedlist.c stack.c queue.c hash_map.c
 OFILES = main.o linkedlist.o stack.o queue.o hash_map.o
