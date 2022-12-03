@@ -14,7 +14,6 @@ int main(int argc, char** argv)
     insert_hash(HS,"Eliza",6);
     insert_hash(HS,"Szymon",6);
     insert_hash(HS,"Dariusz",7);
-    insert_hash(HS,"Mariusz",7);
 
     print_hash_table(HS);
 
