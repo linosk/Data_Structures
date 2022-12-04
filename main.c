@@ -1,10 +1,15 @@
-#include "hash_map.h"
+#include "graph.h"
 
 int main(int argc, char** argv)
 {
-    Hash_map* HS = initilize_hash_map(100);
 
-    destroy_hash_map(HS);
+    Graph* ne = create_graph(3);
+
+    declare_graph_structure(ne);
+
+    print_graph_values(ne);
+
+    destroy_graph(ne);
 
     return 0;
 }
