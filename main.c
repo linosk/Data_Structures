@@ -1,23 +1,15 @@
-#include "hash_map.h"
+#include "graph.h"
 
 int main(int argc, char** argv)
 {
 
-    Hash_map* HS = initilize_hash_map(100);
+    Graph* ne = create_graph(3);
 
-    insert_hash(HS,"Damian",6);
-    insert_hash(HS,"Anna",4);
-    insert_hash(HS,"Oskar",5);
-    insert_hash(HS,"Zuzanna",7);
-    insert_hash(HS,"Tomasz",6);
-    insert_hash(HS,"Edward",6);
-    insert_hash(HS,"Eliza",6);
-    insert_hash(HS,"Szymon",6);
-    insert_hash(HS,"Dariusz",7);
+    declare_graph_structure(ne);
 
-    print_hash_table(HS);
+    print_graph_values(ne);
 
-    destroy_hash_map(HS);
+    destroy_graph(ne);
 
     return 0;
 }
