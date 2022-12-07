@@ -73,11 +73,16 @@ void declare_graph_structure(Graph* GRPH)
     {
         for(int j=0;j<GRPH->Nodes;j++)
         {
-            fprintf(stdout,"Is node %d connected to node %d (0 means no connection, 1 means connection)?\n",i,j);
-            while(Is_connected!=0&&Is_connected!=1)
-                scanf("%d",&Is_connected);
-            GRPH->Edges[i][j] = Is_connected;
-            Is_connected = -1;
+            if(i==j)
+                GRPH->Edges[i][j] = 0;
+            else
+            {
+                fprintf(stdout,"Is node %d connected to node %d (0 means no connection, 1 means connection)?\n",i,j);
+                while(Is_connected!=0&&Is_connected!=1)
+                    scanf("%d",&Is_connected);
+                GRPH->Edges[i][j] = Is_connected;
+                Is_connected = -1;
+            }
         }
     }
 }
