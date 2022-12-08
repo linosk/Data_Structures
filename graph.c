@@ -100,6 +100,21 @@ void print_graph_values(Graph* GRPH)
     }
 }
 
+void __dfs(Graph* GRPH, int Node)
+{
+    Stack* STCK = initilize_stack(GRPH->Nodes);
+    for(int i=Node;i<GRPH->Nodes;i++)
+    {
+        
+    }
+    destroy_stack(STCK);
+}
+
+void dfs(Graph* GRPH)
+{
+    __dfs(GRPH,0);
+}
+
 void destroy_graph(Graph* GRPH)
 {
     for(int i=0;i<GRPH->Nodes;i++)
