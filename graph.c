@@ -101,12 +101,10 @@ void declare_graph_structure_from_file(Graph* GRPH)
     int Fseek_beg_check = fseek(File,0,SEEK_SET);
     assert(Fseek_beg_check==0);
 
-    fprintf(stdout,"%d\n",File_size);
     char* File_content = malloc(File_size*sizeof(char));
 
     int Fread_check = fread(File_content,1,File_size*sizeof(char),File);
     assert(Fread_check!=1);
-    fprintf(stdout,"%c\n",File_content[0]);
 
     //Find another way later to make this offest
     const int Convertion_correction_offest = 48;
@@ -156,19 +154,41 @@ void print_graph_values(Graph* GRPH)
     }
 }
 
-void __dfs(Graph* GRPH, int Node)
+void __dfs(Graph* GRPH, int Node, Stack* STCK, int* Visited)
 {
-    Stack* STCK = initilize_stack(GRPH->Nodes);
+    if(Visited[Node]==1)
+    {
+        //fprintf(stdout,"%d\n",Node);
+        return;
+    }
     for(int i=Node;i<GRPH->Nodes;i++)
     {
-        
+        for(int j=0;j<GRPH->Nodes;j++)
+        {
+            if(GRPH->Edges[i][j]==1)
+            {
+                //fprintf(stdout,"%d,%d\n",i,j);
+                Visited[i]=1;
+                __dfs(GRPH,j,STCK,Visited);
+            }
+        }
+        Visited[i]=1;
+        return;
     }
-    destroy_stack(STCK);
 }
 
 void dfs(Graph* GRPH)
 {
-    __dfs(GRPH,0);
+    Stack* STCK = initilize_stack(GRPH->Nodes);
+    int* Visited = malloc(GRPH->Nodes*sizeof(int));
+    memset(Visited,0,GRPH->Nodes*sizeof(int));
+    __dfs(GRPH,0,STCK,Visited);
+    for(int i=0;i<GRPH->Nodes;i++)
+    {
+       fprintf(stdout,"%d\n",Visited[i]);
+    }
+    destroy_stack(STCK);
+    free(Visited);
 }
 
 void destroy_graph(Graph* GRPH)

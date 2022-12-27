@@ -11,6 +11,8 @@ int main(int argc, char** argv)
 
     print_graph_values(ne);
 
+    dfs(ne);
+
     destroy_graph(ne);
 
     return 0;

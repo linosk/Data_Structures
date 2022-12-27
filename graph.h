@@ -42,7 +42,7 @@ As always issues with printing matrix values.
 */
 void print_graph_values(Graph* GRPH);
 
-void __dfs(Graph* GRPH, int Node);
+void __dfs(Graph* GRPH, int Node, Stack* STCK, int* Visited);
 
 void dfs(Graph* GRPH);
 
