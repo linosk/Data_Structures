@@ -3,7 +3,7 @@
 int main(int argc, char** argv)
 {
 
-    Graph* ne = create_graph(6);
+    Graph* ne = create_graph(5);
 
     declare_graph_structure_from_file(ne);
 

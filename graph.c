@@ -158,22 +158,20 @@ void __dfs(Graph* GRPH, int Node, Stack* STCK, int* Visited)
 {
     if(Visited[Node]==1)
     {
-        //fprintf(stdout,"%d\n",Node);
         return;
     }
     for(int i=Node;i<GRPH->Nodes;i++)
     {
+        if(Visited[i]==0)
+            push_stack(STCK,i);
+        Visited[i]=1;
         for(int j=0;j<GRPH->Nodes;j++)
         {
             if(GRPH->Edges[i][j]==1)
             {
-                //fprintf(stdout,"%d,%d\n",i,j);
-                Visited[i]=1;
                 __dfs(GRPH,j,STCK,Visited);
             }
         }
-        Visited[i]=1;
-        return;
     }
 }
 
@@ -187,6 +185,7 @@ void dfs(Graph* GRPH)
     {
        fprintf(stdout,"%d\n",Visited[i]);
     }
+    print_stack(STCK);
     destroy_stack(STCK);
     free(Visited);
 }
