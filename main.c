@@ -3,11 +3,15 @@
 int main(int argc, char** argv)
 {
 
-    Graph* ne = create_graph(6);
+    Graph* ne = create_graph(5);
 
-    declare_graph_structure(ne);
+    declare_graph_structure_from_file(ne);
+
+    //declare_graph_structure(ne);
 
     print_graph_values(ne);
+
+    dfs(ne);
 
     destroy_graph(ne);
 
