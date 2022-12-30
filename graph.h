@@ -12,6 +12,8 @@
 
 #include "stack.h"
 
+#include "queue.h"
+
 typedef struct Graph Graph;
 
 /*
@@ -42,9 +44,16 @@ As always issues with printing matrix values.
 */
 void print_graph_values(Graph* GRPH);
 
-void __dfs(Graph* GRPH, int Node, Stack* STCK, int* Visited);
+/*
+99% sure that it works correctly so check once again later.
+*/
+void __dfs(Graph* GRPH, int Current_node, Stack* STCK, Stack* Order, int* Visited);
 
 void dfs(Graph* GRPH);
+
+void __bfs(Graph* GRPH, int Currnet_node, Queue* Q, Queue* Order, int* Visited);
+
+void bfs(Graph* GRPH);
 
 void destroy_graph(Graph* GRPH);
 

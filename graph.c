@@ -154,39 +154,81 @@ void print_graph_values(Graph* GRPH)
     }
 }
 
-void __dfs(Graph* GRPH, int Node, Stack* STCK, int* Visited)
+void __dfs(Graph* GRPH, int Current_node, Stack* STCK, Stack* Order, int* Visited)
 {
-    if(Visited[Node]==1)
+    if(Visited[Current_node]==1)
     {
         return;
     }
-    for(int i=Node;i<GRPH->Nodes;i++)
+    if(Visited[Current_node]==0)
     {
-        if(Visited[i]==0)
-            push_stack(STCK,i);
-        Visited[i]=1;
-        for(int j=0;j<GRPH->Nodes;j++)
+        Visited[Current_node]=1;
+        push_stack(Order,Current_node);
+    }
+    for(int i=GRPH->Nodes-1;i>=0;i--)
+    {
+        if(GRPH->Edges[Current_node][i]==1&&Visited[i]==0)
         {
-            if(GRPH->Edges[i][j]==1)
-            {
-                __dfs(GRPH,j,STCK,Visited);
-            }
+            push_stack(STCK,i);
         }
     }
+    int Next_node = get_last_value_stack(STCK);
+    if(Next_node==-1)
+        Next_node=Current_node+1;
+    pop_stack(STCK);
+    __dfs(GRPH,Next_node,STCK,Order,Visited);
 }
 
 void dfs(Graph* GRPH)
 {
     Stack* STCK = initilize_stack(GRPH->Nodes);
+    Stack* Order = initilize_stack(GRPH->Nodes);
     int* Visited = malloc(GRPH->Nodes*sizeof(int));
     memset(Visited,0,GRPH->Nodes*sizeof(int));
-    __dfs(GRPH,0,STCK,Visited);
+    __dfs(GRPH,0,STCK,Order,Visited);
+    print_stack(STCK);
+    print_stack(Order);
+    destroy_stack(STCK);
+    destroy_stack(Order);
+    free(Visited);
+}
+
+void __bfs(Graph* GRPH, int Current_node, Queue* Q, Queue* Order, int* Visited)
+{
+    if(Visited[Current_node]==1)
+    {
+        return;
+    }
+    if(Visited[Current_node]==0)
+    {
+        Visited[Current_node]=1;
+        push_queue(Order,Current_node);
+    }
     for(int i=0;i<GRPH->Nodes;i++)
     {
-       fprintf(stdout,"%d\n",Visited[i]);
+        if(GRPH->Edges[Current_node][i]==1&&Visited[i]==0)
+        {
+            push_queue(Q,i);
+        }
     }
-    print_stack(STCK);
-    destroy_stack(STCK);
+    int Next_node = get_first_value_queue(Q);
+    if(Next_node==-1)
+        Next_node=Current_node+1;
+    pop_queue(Q);
+    __bfs(GRPH,Next_node,Q,Order,Visited);
+}
+
+void bfs(Graph* GRPH)
+{
+    Queue* Q = initilize_queue(GRPH->Nodes);
+    Queue* Order = initilize_queue(GRPH->Nodes);
+    int* Visited = malloc(GRPH->Nodes*sizeof(int));
+    memset(Visited,0,GRPH->Nodes*sizeof(int));
+    __bfs(GRPH,0,Q,Order,Visited);
+    print_queue(Q);
+    print_queue(Order);
+    destroy_queue(Q);
+    destroy_queue(Order);
     free(Visited);
 }
 

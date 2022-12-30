@@ -2,8 +2,7 @@
 
 int main(int argc, char** argv)
 {
-
-    Graph* ne = create_graph(5);
+    Graph* ne = create_graph(4);
 
     declare_graph_structure_from_file(ne);
 
@@ -12,6 +11,8 @@ int main(int argc, char** argv)
     print_graph_values(ne);
 
     dfs(ne);
+    fprintf(stdout,"-----------------\n");
+    bfs(ne);
 
     destroy_graph(ne);
 

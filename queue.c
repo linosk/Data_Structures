@@ -40,6 +40,14 @@ void pop_queue(Queue* Q){
     Q->Queue_top--;
 }
 
+int get_first_value_queue(Queue* Q)
+{
+    assert(Q!=NULL);
+    if(Q->Queue_top==-1)
+        return -1;
+    return Q->Queue_array[0];
+}
+
 void print_queue(Queue* Q){
     assert(Q!=NULL);
     //The if below can be made into a seperate function

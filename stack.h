@@ -12,9 +12,11 @@ Stack* initilize_stack(int Size);
 
 void push_stack(Stack* STCK, int New_value);
 
-void pop_stack(Stack* Stack);
+void pop_stack(Stack* STCK);
 
-void print_stack(Stack* Stack);
+int get_last_value_stack(Stack* STCK);
+
+void print_stack(Stack* STCK);
 
 //IS STACK EMPTY
 
