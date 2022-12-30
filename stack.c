@@ -37,6 +37,11 @@ void pop_stack(Stack* STCK){
     STCK->Stack_top--;
 }
 
+int get_last_value_stack(Stack* STCK)
+{
+    return STCK->Stack_array[STCK->Stack_top];
+}
+
 void print_stack(Stack* STCK){
     assert(STCK!=NULL);
     //The if below can be made into a seperate function
