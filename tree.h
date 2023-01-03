@@ -14,10 +14,12 @@ void __bst_insert(Tree_node** Root, Tree_node* New_node);
 
 void bst_insert(Tree_node** Root, int New_value);
 
-void __bst_display(Tree_node* Root);
-
 void bst_display(Tree_node* Root);
 
 void bst_destroy(Tree_node* Root);
+
+void __bst_find(Tree_node* Root, int Searched, int Depth, int Found);
+
+void bst_find(Tree_node* Root, int Searched);
 
 #endif

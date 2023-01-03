@@ -30,11 +30,11 @@ void __bst_insert(Tree_node** Root, Tree_node* New_node)
         free(New_node);
         return;
     }
-    if(New_node->Value<(*Root)->Value)
+    else if(New_node->Value<(*Root)->Value)
     {
         __bst_insert(&((*Root)->Left),New_node);
     }
-    if(New_node->Value>(*Root)->Value)
+    else
     {
         __bst_insert(&((*Root)->Right),New_node);
     }
@@ -46,31 +46,44 @@ void bst_insert(Tree_node** Root, int New_value)
     __bst_insert(Root,New_node);
 }
 
-void __bst_display(Tree_node* Root)
+void bst_display(Tree_node* Root)
 {
     if(Root==NULL)
         return;
-    printf("%d\n",Root->Value);
-    __bst_display(Root->Left);
-    __bst_display(Root->Right);
-}
-
-void bst_display(Tree_node* Root)
-{
-    assert(Root!=NULL);
-    printf("Root value is: %d\n", Root->Value);
-    __bst_display(Root->Left);
-    __bst_display(Root->Right);
+    printf("%d\n", Root->Value);
+    bst_display(Root->Left);
+    bst_display(Root->Right);
 }
 
 void bst_destroy(Tree_node* Root)
 {
     if(Root==NULL)
         return;
-    if(Root->Left==NULL&&Root->Right==NULL)
-    {
-        free(Root);
-    }
     bst_destroy(Root->Left);
     bst_destroy(Root->Right);
+    free(Root);
+}
+
+void __bst_find(Tree_node* Root, int Searched, int Depth, int Found)
+{
+    if(Found==1)
+        return;
+    if(Root==NULL)
+        return;
+    if(Root->Value==Searched)
+    {
+        printf("The value is in the tree.\n");
+        Found = 1;
+        return;
+    }
+    __bst_find(Root->Left,Searched,Depth,Found);
+    __bst_find(Root->Right,Searched,Depth,Found);
+    Depth++;
+}
+
+void bst_find(Tree_node* Root, int Searched)
+{
+    int Depth = 0;
+    int Found = 0;
+    __bst_find(Root,Searched,Depth,Found);
 }
