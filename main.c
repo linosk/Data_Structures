@@ -11,11 +11,16 @@ int main(int argc, char** argv)
     bst_insert(&Root,5);
     bst_insert(&Root,7);
 
+    //bst_display(Root);
+    
+    //bst_find_value(Root,7);
+    //bst_find_value(Root,8);
+
+    bst_display(Root);
+    bst_reverse(Root);
     bst_display(Root);
 
     bst_destroy(Root);
-    
-    //bst_find(Root,2);
 
     return 0;
 }
