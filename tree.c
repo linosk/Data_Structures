@@ -86,13 +86,6 @@ void bst_find_value(Tree_node* Root, int Searched)
         printf("The value %d is in not in the tree.\n",Searched);
 }
 
-void __bst_reverse_swap(Tree_node* Root)
-{
-    Tree_node* Temporary_node = Root->Left;
-    Root->Left = Root->Right;
-    Root->Right = Temporary_node;
-}
-
 void bst_reverse(Tree_node* Root)
 {
     if(Root==NULL)
@@ -101,6 +94,18 @@ void bst_reverse(Tree_node* Root)
     bst_reverse(Root->Right);
     if(Root->Left!=NULL&&Root->Right!=NULL)
     {
-        __bst_reverse_swap(Root);
+        Tree_node* Temporary_node = Root->Left;
+        Root->Left = Root->Right;
+        Root->Right = Temporary_node;
+    }
+    else if(Root->Left!=NULL&&Root->Right==NULL)
+    {
+        Root->Right=Root->Left;
+        Root->Left=NULL;
+    }
+    else if(Root->Left==NULL&&Root->Right!=NULL)
+    {
+        Root->Left=Root->Right;
+        Root->Right=NULL;
     }
 }

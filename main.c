@@ -7,8 +7,8 @@ int main(int argc, char** argv)
     bst_insert(&Root,2);
     bst_insert(&Root,6);
     bst_insert(&Root,1);
-    bst_insert(&Root,3);
-    bst_insert(&Root,5);
+    //bst_insert(&Root,3);
+    //bst_insert(&Root,5);
     bst_insert(&Root,7);
 
     //bst_display(Root);
