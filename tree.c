@@ -64,26 +64,43 @@ void bst_destroy(Tree_node* Root)
     free(Root);
 }
 
-void __bst_find(Tree_node* Root, int Searched, int Depth, int Found)
+void __bst_find_value(Tree_node* Root, int Searched, int* Found)
 {
-    if(Found==1)
+    if(*Found==1)
         return;
     if(Root==NULL)
         return;
-    if(Root->Value==Searched)
-    {
-        printf("The value is in the tree.\n");
-        Found = 1;
-        return;
-    }
-    __bst_find(Root->Left,Searched,Depth,Found);
-    __bst_find(Root->Right,Searched,Depth,Found);
-    Depth++;
+    if(Root->Value==Searched&&*Found==0)
+        *Found = 1;
+    __bst_find_value(Root->Left,Searched,Found);
+    __bst_find_value(Root->Right,Searched,Found);
 }
 
-void bst_find(Tree_node* Root, int Searched)
+void bst_find_value(Tree_node* Root, int Searched)
 {
-    int Depth = 0;
     int Found = 0;
-    __bst_find(Root,Searched,Depth,Found);
+    __bst_find_value(Root,Searched,&Found);
+    if(Found==1)
+        printf("The value %d is in the tree.\n",Searched);
+    else
+        printf("The value %d is in not in the tree.\n",Searched);
+}
+
+void __bst_reverse_swap(Tree_node* Root)
+{
+    Tree_node* Temporary_node = Root->Left;
+    Root->Left = Root->Right;
+    Root->Right = Temporary_node;
+}
+
+void bst_reverse(Tree_node* Root)
+{
+    if(Root==NULL)
+        return;
+    bst_reverse(Root->Left);
+    bst_reverse(Root->Right);
+    if(Root->Left!=NULL&&Root->Right!=NULL)
+    {
+        __bst_reverse_swap(Root);
+    }
 }

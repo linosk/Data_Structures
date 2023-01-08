@@ -18,8 +18,12 @@ void bst_display(Tree_node* Root);
 
 void bst_destroy(Tree_node* Root);
 
-void __bst_find(Tree_node* Root, int Searched, int Depth, int Found);
+void __bst_find_value(Tree_node* Root, int Searched, int* Found);
 
-void bst_find(Tree_node* Root, int Searched);
+void bst_find_value(Tree_node* Root, int Searched);
+
+void __bst_reverse_swap(Tree_node* Root);
+
+void bst_reverse(Tree_node* Root);
 
 #endif
